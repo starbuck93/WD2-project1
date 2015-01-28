@@ -9,24 +9,28 @@ After your recent success in dabbling with CSS and JavaScript, your boss hears o
 ##Create a website the contains the following:
 
 ###Front page:
-A place for users to sign up for user accounts (username, password, email address)
-A place to login next to, under, etc, on the same page as the sign-up.
+> A place for users to sign up for user accounts (username, password, email address)
+> A place to login next to, under, etc, on the same page as the sign-up.
+
 ###Main page (after login):
-News stories are listed in chronological order
-Every news story has: title, story, date, submitted_by, approved_by
-Link to RSS feed
+> News stories are listed in chronological order
+> Every news story has: title, story, date, submitted_by, approved_by
+> Link to RSS feed
+
 ###JavaScript form validation for user sign-up:
-No field can be blank
-E-mail field must contain the “@” sign
-Password fields must match and display to the user while typing whether or not they currently match given their current contents.
+> No field can be blank
+> E-mail field must contain the “@” sign
+> Password fields must match and display to the user while typing whether or not they currently match given their current contents.
+
 ###Logging in:
-A moderator can view stories as well as submit them.
-Moderators must approve a story before it's front-page visible
-Users must be able to submit stories for review.
-Your site must be written entirely in HTML5 using semantic elements.
-All pages must utilize CSS3 to make it look good.  Poor design will cause points to be lost.
-Poor coding practices will cause points to be lost.
-Bonus: produce an XML RSS feed. (+5 points for a total of 105)
+> A moderator can view stories as well as submit them.
+> Moderators must approve a story before it's front-page visible
+> Users must be able to submit stories for review.
+
+* Your site must be written entirely in HTML5 using semantic elements.
+* All pages must utilize CSS3 to make it look good.  Poor design will cause points to be lost.
+* Poor coding practices will cause points to be lost.
+* Bonus: produce an XML RSS feed. (+5 points for a total of 105)
  
 
 You are allowed to be in groups of 3.
