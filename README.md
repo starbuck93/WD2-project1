@@ -37,9 +37,10 @@ You are allowed to be in groups of 3.
 
  
 
-Your group must turn in the following:
+####Your group must turn in the following:
 
-Your code folder in a zip format
-A link to your website (the server you were given)
-A statement saying what each team member did to contribute to this project
-The deadline is class time on Fri, Feb 6.  Late work will be accepted, losing 1 letter grade per day it is late.
+* Your code folder in a zip format
+* A link to your website (the server you were given)
+* A statement saying what each team member did to contribute to this project
+
+#####The deadline is class time on Fri, Feb 6.  Late work will be accepted, losing 1 letter grade per day it is late.
