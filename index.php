@@ -76,6 +76,8 @@ if($action == "login_user")
                                     <label>
                                         <input name="remember" type="checkbox" value="Remember Me">Remember Me
                                     </label>
+
+                                    <a href="#"><b>Create an acount</b></a>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="hidden" name="action" value="login_user" />
