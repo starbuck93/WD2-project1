@@ -20,13 +20,18 @@ if($action == "login_user")
 {
 	$email = $_POST["email"];
     $passwrd= $_POST["password"];
+    if($email == "")
+        die('you have to input an email address!');
+    if($passwrd == "")
+        die('you have to input a password!');
 	$email = htmlentities($link->real_escape_string($email));
 	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwd'");
 	if(!$result)
 		die ('Can\'t query users because: ' . $link->error);
-	else
-		header("Location: http://localhost/WD2-project1/portal");
+	else {
+		header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
         die();
+    }
 
 }
 
