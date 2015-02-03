@@ -61,37 +61,6 @@ if($action == "login_user")
 	</head>
 	<body background="bg.jpg" style="margin-top:250px">
 <!--login modal-->
-<<<<<<< HEAD:index.html
-
-    <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title" ><strong>Generic Company</strong></h3>
-                        </div>
-                        <div class="panel-body">
-                            <form role="form">
-                                <fieldset>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                                    </div>
-                                    <div class="form-group">
-                                        <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                        </label>
-
-                                        <a href="#"><b>Create an acount</b></a>
-                                    </div>
-                                    <!-- Change this to a button or input when using this as a form -->
-                                    <a href="portal/index.html" class="btn btn-lg btn-success btn-block">Login</a>
-                                </fieldset>
-                            </form>
-                        </div>
-=======
 <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -120,22 +89,14 @@ if($action == "login_user")
                                 <button class="btn btn-lg btn-success btn-block">Login</button>
                             </fieldset>
                         </form>
->>>>>>> c936bfe8f142bf35bcc6dff382b317c4b8973075:index.php
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD:index.html
-    	<!-- script references -->
-    		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-    		<script src="js/bootstrap.min.js"></script>
 
-
-=======
     </div>
 	<!-- script references -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
->>>>>>> c936bfe8f142bf35bcc6dff382b317c4b8973075:index.php
 	</body>
 </html>
