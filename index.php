@@ -59,7 +59,7 @@ if($action == "login_user")
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
-	<body background="bg.jpg" style="margin-top:250px">
+	<body style="margin-top:200px">
 <!--login modal-->
 <div class="container">
         <div class="row">
