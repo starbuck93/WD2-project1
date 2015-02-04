@@ -16,34 +16,30 @@ else
 
 $message = "";
 
-if($action == "login_user")
+if($action == "add_user")
 {
+	$name = $_POST["nameActual"];
 	$email = $_POST["email"];
-    $passwrd= $_POST["password"];
-    if($email == "")
-        die('you have to input an email address!');
-    if($passwrd == "")
-        die('you have to input a password!');
+	$emailConfirm = $_POST["email2"];
+    $passwrd = $_POST["password"];
+    $passwrd2 = $_POST["password2"];
+
+    $username = trim($name);
+
+    if(($passwrd != $passwrd2) || ($email != $emailConfirm))
+    	die('Passwords or emails do not match!');
+
 	$email = htmlentities($link->real_escape_string($email));
-	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwd'");
+	$result = $link->query("INSERT INTO users (name,username,pass,email,is_mod) VALUES ('$name','$username','$passwrd','$email', 0)");
+
 	if(!$result)
 		die ('Can\'t query users because: ' . $link->error);
 	else {
 		header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
-        die();
+        die(); //this is imporant so the php script dies when we move pages
     }
 
 }
-
-// elseif ($action == "delete_user") {
-// 	$id = $_POST["id"];
-// 	$id = htmlentities($link->real_escape_string($id));
-// 	$result = $link->query("delete from users where id='" . $id . "'");
-// 	if(!$result)
-// 		die ('Can\'t query users because: ' . $link->error);
-// 	else
-// 		$message = "User Deleted";
-// }
 
 ?>
 
@@ -92,30 +88,33 @@ function CheckPswd() {
                         <h3 class="panel-title"><strong>Create Account for Generic Company</strong></h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="index.php">
+                        <form role="form" method="post" action="signup2.php">
                             <fieldset>
+                            	<div class="form-group">
+                                    <input class="form-control" id="name" placeholder="Name" name="nameActual" type="text" value="" autofocus required>
+                                </div>
                                 <div class="form-group">
                                     <input class="form-control" id="e1" placeholder="E-mail" name="email" type="email" value="" autofocus required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="e2" placeholder="Confirm E-mail" name="email" type="email" value="" onkeyup="CheckEm()" required>
+                                    <input class="form-control" id="e2" placeholder="Confirm E-mail" name="email2" type="email" value="" onkeyup="CheckEm()" required>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" id="pswd1" placeholder="Password" name="password" type="password" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" id="pswd2" placeholder="Confirm Password" name="password" type="password" value="" onkeyup= "CheckPswd()" required>
+                                    <input class="form-control" id="pswd2" placeholder="Confirm Password" name="password2" type="password" value="" onkeyup= "CheckPswd()" required>
                                     <span id="validate-status"></span>
                                     
                                     <hr>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
-                                <input type="hidden" name="action" value="login_user" />
+                                <input type="hidden" name="action" value="add_user" />
                                 <button class="btn btn-lg btn-success btn-block">Sign Up</button>
-                                <br>
-                                <center><a href="index.php"><b>Already have an account?</b></a></center>
                             </fieldset>
                         </form>
+                        <br>
+                        <center><a href="index.php"><b>Already have an account?</b></a></center>
                     </div>
                 </div>
             </div>
