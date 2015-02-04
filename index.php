@@ -20,19 +20,32 @@ if($action == "login_user")
 {
 	$email = $_POST["email"];
     $passwrd= $_POST["password"];
+    $emailFromServer = '';
+    $passFromServer = '';
+
     if($email == "")
         die('you have to input an email address!');
     if($passwrd == "")
         die('you have to input a password!');
+
 	$email = htmlentities($link->real_escape_string($email));
-	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwd'");
-	if(!$result)
-		die ('Can\'t query users because: ' . $link->error);
-	else {
-		header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
-        die();
+	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
+
+    /* fetch object array */
+    /* I think this will only work when there are unique emails in our database */
+    /* and when the SQL returns true (so the email and password match!) */    
+    while ($obj = $result->fetch_object()) {
+    	$emailFromServer = $obj->email;
+    	$passFromServer = $obj->pass;
     }
 
+	if(!$result)
+		die ('Can\'t query users because: ' . $link->error);
+	else { //the user is logged in because the SQL returned true!
+		//die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
+		header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
+  		die();
+    }
 }
 
 // elseif ($action == "delete_user") {
