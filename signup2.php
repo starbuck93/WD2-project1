@@ -48,6 +48,29 @@ if($action == "login_user")
 ?>
 
 
+<script>
+
+$(document).ready(function() {
+  $("#pswd2").keyup(validate);
+});
+
+function CheckPswd() {
+  var pswd1 = $("#pswd1").val();
+  var pswd2 = $("#pswd2").val();
+    
+ 
+    if(pswd1 == pswd2) {
+        
+       $("#validate-status").text("valid");        
+    }
+    else {
+        $("#validate-status").text("invalid");
+    }
+    
+}
+
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -72,16 +95,19 @@ if($action == "login_user")
                         <form role="form" method="post" action="index.php">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                    <input class="form-control" id="e1" placeholder="E-mail" name="email" type="email" value="" autofocus required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Confirm E-mail" name="email" type="email">
+                                    <input class="form-control" id="e2" placeholder="Confirm E-mail" name="email" type="email" value="" onkeyup="CheckEm()" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                    <input class="form-control" id="pswd1" placeholder="Password" name="password" type="password" value="" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Confirm Password" name="password" type="password" value="">
+                                    <input class="form-control" id="pswd2" placeholder="Confirm Password" name="password" type="password" value="" onkeyup= "CheckPswd()" required>
+                                    <span id="validate-status"></span>
+                                    
+                                    <hr>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="hidden" name="action" value="login_user" />
