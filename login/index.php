@@ -37,7 +37,12 @@ if($action == "login_user")
     while ($obj = $result->fetch_object()) {
     	$emailFromServer = $obj->email;
     	$passFromServer = $obj->pass;
+        $moderator = $obj->is_mod;
     }
+
+    if($moderator) //super secure!!!!
+        header("Location: http://localhost/WD2-project1/admin"); //of course this only works on localhost but it has to be a full URL
+        die(); 
 
 	if(!$result)
 		die ('Can\'t query users because: ' . $link->error);
