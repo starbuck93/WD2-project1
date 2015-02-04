@@ -20,32 +20,19 @@ if($action == "login_user")
 {
 	$email = $_POST["email"];
     $passwrd= $_POST["password"];
-    $emailFromServer = '';
-    $passFromServer = '';
-
     if($email == "")
         die('you have to input an email address!');
     if($passwrd == "")
         die('you have to input a password!');
-
 	$email = htmlentities($link->real_escape_string($email));
-	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
-
-    /* fetch object array */
-    /* I think this will only work when there are unique emails in our database */
-    /* and when the SQL returns true (so the email and password match!) */    
-    while ($obj = $result->fetch_object()) {
-    	$emailFromServer = $obj->email;
-    	$passFromServer = $obj->pass;
-    }
-
+	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwd'");
 	if(!$result)
 		die ('Can\'t query users because: ' . $link->error);
-	else { //the user is logged in because the SQL returned true!
-		//die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
+	else {
 		header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
-  		die();
+        die();
     }
+
 }
 
 // elseif ($action == "delete_user") {
@@ -77,9 +64,9 @@ if($action == "login_user")
 <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
-                <div class="panel panel-default">
+                <div class="panel panel-success">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><strong>Generic Company</strong></h3>
+                        <h3 class="panel-title"><strong>Create Account for Generic Company</strong></h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="index.php">
@@ -88,13 +75,19 @@ if($action == "login_user")
                                     <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
                                 </div>
                                 <div class="form-group">
+                                    <input class="form-control" placeholder="Confirm E-mail" name="email" type="email">
+                                </div>
+                                <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Confirm Password" name="password" type="password" value="">
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="hidden" name="action" value="login_user" />
-                                <button class="btn btn-lg btn-primary btn-block">Login</button>
+                                <button class="btn btn-lg btn-success btn-block">Sign Up</button>
                                 <br>
-                                <center><a href="signup2.php"><b>Create a new account</b></a></center>
+                                <center><a href="index.php"><b>Already have an account?</b></a></center>
                             </fieldset>
                         </form>
                     </div>
