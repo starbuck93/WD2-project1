@@ -41,8 +41,10 @@ if($action == "login_user")
     }
 
     if($moderator) //super secure!!!!
+    {
         header("Location: http://localhost/WD2-project1/admin"); //of course this only works on localhost but it has to be a full URL
         die(); 
+    }
 
 	if(!$result)
 		die ('Can\'t query users because: ' . $link->error);
@@ -98,10 +100,10 @@ if($action == "login_user")
                                 <!-- Change this to a button or input when using this as a form -->
                                 <input type="hidden" name="action" value="login_user" />
                                 <button class="btn btn-lg btn-primary btn-block">Login</button>
-                                <br>
-                                <center><a href="signup2.php"><b>Create a new account</b></a></center>
                             </fieldset>
                         </form>
+                        <br>
+                        <center><a href="signup2.php"><b>Create a new account</b></a></center>
                     </div>
                 </div>
             </div>
