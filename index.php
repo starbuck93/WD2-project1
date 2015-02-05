@@ -111,7 +111,7 @@ if($action == "login_user")
                                 <button class="btn btn-lg btn-primary btn-block">Login</button>
                             </fieldset>
                         </form>
-                        <b><?php
+                        <br><?php
                             if($message != "")
                                 print $message;?>
                         <center><a href="signup.php"><b>Create a new account</b></a></center>
