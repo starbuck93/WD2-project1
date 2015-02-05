@@ -35,7 +35,7 @@ if($action == "login_user")
         $row_cnt = $result->num_rows;
 
         if($row_cnt == 0){
-            print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">Something went wrong! Email or password is wrong. Or you should register first.</div><div class=\"col-md-4\"></div></div>");
+            print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">Something went wrong! The email or password is incorrect, or you'll need to sign up.</div><div class=\"col-md-4\"></div></div>");
         }
 
         /* fetch object array */
@@ -111,7 +111,7 @@ if($action == "login_user")
                                 <button class="btn btn-lg btn-primary btn-block">Login</button>
                             </fieldset>
                         </form>
-                        <b><?php
+                        <?php
                             if($message != "")
                                 print $message;?>
                         <center><a href="signup.php"><b>Create a new account</b></a></center>
