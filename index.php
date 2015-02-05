@@ -49,19 +49,16 @@ if($action == "login_user")
 
         if($moderator) //super secure!!!!
         {
-            header("Location: http://localhost/WD2-project1/admin"); //of course this only works on localhost but it has to be a full URL
+            header("Location: http://localhost/WD2-project1/portal/portal_ismod.html"); //of course this only works on localhost but it has to be a full URL
             die(); 
         }
-
-    	if ($message = "") {
-            if(!$result)
-                    die ('Can\'t query users because: ' . $link->error);
-                else { //the user is logged in because the SQL returned true!
-                    //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
-                    header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
-                      die();
-                }
-        }
+        if(!$result)
+                die ('Can\'t query users because: ' . $link->error);
+            else { //the user is logged in because the SQL returned true!
+                //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
+                header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
+                  die();
+            }
     }
 
 // elseif ($action == "delete_user") {
