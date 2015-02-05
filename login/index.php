@@ -31,13 +31,18 @@ if($action == "login_user")
 	$email = htmlentities($link->real_escape_string($email));
 	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
 
+    $row_cnt = $result->num_rows;
+
+    if($row_cnt == 0)
+        die('You should register first before doing that.');
+
     /* fetch object array */
     /* I think this will only work when there are unique emails in our database */
     /* and when the SQL returns true (so the email and password match!) */    
     while ($obj = $result->fetch_object()) {
     	$emailFromServer = $obj->email;
-    	$passFromServer = $obj->pass;
-        $moderator = $obj->is_mod;
+    	$passFromServer =  $obj->pass;
+        $moderator =       $obj->is_mod;
     }
 
     if($moderator) //super secure!!!!
