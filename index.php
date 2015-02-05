@@ -17,48 +17,52 @@ else
 $message = "";
 
 if($action == "login_user")
-{
-	$email = $_POST["email"];
-    $passwrd= $_POST["password"];
-    $emailFromServer = '';
-    $passFromServer = '';
-
-    if($email == "")
-        die('you have to input an email address!');
-    if($passwrd == "")
-        die('you have to input a password!');
-
-	$email = htmlentities($link->real_escape_string($email));
-	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
-
-    $row_cnt = $result->num_rows;
-
-    if($row_cnt == 0)
-        die('You should register first before doing that.');
-
-    /* fetch object array */
-    /* I think this will only work when there are unique emails in our database */
-    /* and when the SQL returns true (so the email and password match!) */    
-    while ($obj = $result->fetch_object()) {
-    	$emailFromServer = $obj->email;
-    	$passFromServer =  $obj->pass;
-        $moderator =       $obj->is_mod;
-    }
-
-    if($moderator) //super secure!!!!
     {
-        header("Location: http://localhost/WD2-project1/admin"); //of course this only works on localhost but it has to be a full URL
-        die(); 
-    }
+    	$email = $_POST["email"];
+        $passwrd= $_POST["password"];
+        $emailFromServer = '';
+        $passFromServer = '';
+        $moderator = '';
 
-	if(!$result)
-		die ('Can\'t query users because: ' . $link->error);
-	else { //the user is logged in because the SQL returned true!
-		//die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
-		header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
-  		die();
+        if($email == "")
+            $message = "You have to input an email address!";
+        if($passwrd == "")
+            $message = "You have to input a password!";
+
+    	$email = htmlentities($link->real_escape_string($email));
+    	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
+
+        $row_cnt = $result->num_rows;
+
+        if($row_cnt == 0){
+            print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">Something went wrong! Email or password is wrong. Or you should register first.</div><div class=\"col-md-4\"></div></div>");
+        }
+
+        /* fetch object array */
+        /* I think this will only work when there are unique emails in our database */
+        /* and when the SQL returns true (so the email and password match!) */    
+        while ($obj = $result->fetch_object()) {
+        	$emailFromServer = $obj->email;
+        	$passFromServer =  $obj->pass;
+            $moderator =       $obj->is_mod;
+        }
+
+        if($moderator) //super secure!!!!
+        {
+            header("Location: http://localhost/WD2-project1/admin"); //of course this only works on localhost but it has to be a full URL
+            die(); 
+        }
+
+    	if ($message = "") {
+            if(!$result)
+                    die ('Can\'t query users because: ' . $link->error);
+                else { //the user is logged in because the SQL returned true!
+                    //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
+                    header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
+                      die();
+                }
+        }
     }
-}
 
 // elseif ($action == "delete_user") {
 // 	$id = $_POST["id"];
@@ -107,7 +111,9 @@ if($action == "login_user")
                                 <button class="btn btn-lg btn-primary btn-block">Login</button>
                             </fieldset>
                         </form>
-                        <br>
+                        <b><?php
+                            if($message != "")
+                                print $message;?>
                         <center><a href="signup.php"><b>Create a new account</b></a></center>
                     </div>
                 </div>
