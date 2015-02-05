@@ -108,7 +108,7 @@ if($action == "login_user")
                             </fieldset>
                         </form>
                         <br>
-                        <center><a href="signup2.php"><b>Create a new account</b></a></center>
+                        <center><a href="signup.php"><b>Create a new account</b></a></center>
                     </div>
                 </div>
             </div>

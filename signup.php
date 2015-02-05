@@ -88,7 +88,7 @@ function CheckPswd() {
                         <h3 class="panel-title"><strong>Create Account for Generic Company</strong></h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="signup2.php">
+                        <form role="form" method="post" action="signup.php">
                             <fieldset>
                             	<div class="form-group">
                                     <input class="form-control" id="name" placeholder="Name" name="nameActual" type="text" value="" autofocus required>
