@@ -79,6 +79,6 @@ $approved_by = 0; //not approved yet
 </head>
 <body>
 <p>Your post was <?php print($success)?> submitted!</p> <br>
-<a href="index.php">Return to homepage</a>
+<a href="index.php"><button type="button" class="btn btn-default btn-sm">Return to homepage</button></a>
 </body>
 </html>
