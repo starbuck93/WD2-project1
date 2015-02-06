@@ -32,7 +32,7 @@ if($action == "login_user")
 
         if($row_cnt == 0){
             $message = "The email or password is incorrect";
-            //print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">$message Something went wrong! The email or password is incorrect, or you'll need to sign up.</div><div class=\"col-md-4\"></div></div>");
+            print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">$message Something went wrong! The email or password is incorrect, or you'll need to sign up.</div><div class=\"col-md-4\"></div></div>");
         }
 
         /* fetch object array */
