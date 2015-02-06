@@ -264,8 +264,10 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
 
 
               </table>
-              <?php if($approve_success !== " ") printf("%s","Successful Approve!");?>
-
+                    <?php if($approve_success !== " ") printf("%s","<div class=\"alert alert-success alert-dismissible\" role=\"alert\">
+                      <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+                       Approved!
+                    </div>");?>
           </div>
         </div>
         
