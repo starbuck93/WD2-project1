@@ -146,11 +146,6 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
 <div class="col-sm-3">
         <h2>News Portal Home</h2>
         <hr>
-        <div class="alert alert-info alert-dismissible" role="alert">
-          Hey! Someone had a baby or something.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        <hr>
         <div class="panel panel-default">
           <div class="panel-heading">Announcements</div>
           <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
@@ -207,6 +202,7 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
                       </div>   
                       
                     </form><!--form-->
+                    
                     
                     
                   </div><!--/panel content-->
