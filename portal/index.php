@@ -202,8 +202,10 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
                       </div>   
                       
                     </form><!--form-->
-                    <?php if($submit_success !== " ") printf("%s","Successful Post!");?>
-
+                    <?php if($submit_success !== " ") printf("%s","<div class=\"alert alert-success alert-dismissible\" role=\"alert\">
+                      <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>
+                       Post successful!
+                    </div>");?>
                     
                     
                   </div><!--/panel content-->
