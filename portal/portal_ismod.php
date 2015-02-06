@@ -147,6 +147,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
             Aliquam in felis sit amet augue.</div>
         </div>
         <hr>
+        <button type="button" class="btn btn-warning btn-lg">Company RSS Feed</button>
   </div><!--/right-->
 <br>
 
@@ -194,7 +195,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
                       <div class="form-group">
                         <div class="controls">
                           <input type="hidden" name="action" value="submit"/>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Submit Post</button>
                         </div>
                       </div>   
                       
@@ -227,7 +228,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
 
 
 <div class="col-md-3">
-      <div class="panel panel-info">
+      <div class="panel panel-primary">
           <div class="panel-heading"><h4>Posts Awaiting Approval</h4></div>
           <div class="panel-body">
               <table class="table table-bordered table-responsive">
@@ -250,8 +251,8 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
                 else{//end if statement?>
                   <tr>
                     <td><p>---</p></td>
-                    <td>nothing to approve!</td> 
-                    <td><p>:-)</p></td>
+                    <td>No posts to approve!</td> 
+                    <td><p>---</p></td>
                   </tr>
 
                 <?php } //end else statement ?>
@@ -264,7 +265,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
         </div>
         <hr>
               <!-- From Boot Snip -->
-                <div class="panel panel-primary">
+                <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         Vote for Employee of The Year
@@ -308,10 +309,10 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
                     </ul>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button type="button" class="btn btn-default btn-sm">
                         Vote</button>
 
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button type="button" class="btn btn-default btn-sm">
                       View Result</button>
                      
                   </div>

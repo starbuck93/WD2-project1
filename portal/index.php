@@ -90,8 +90,8 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
 	<div class="collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li><a href="#">Home</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact Moderator</a></li>
+			<li><a href="#" data-toggle="modal" data-target="#myModal2">About</a></li>
+			<li><a href="#" data-toggle="modal" data-target="#myModal">Contact Moderator</a></li>
 		</ul>
 		<div class="pull-right">
       <ul class="nav navbar-nav">
@@ -100,6 +100,48 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
 		</div>
 	</div>
 </nav>
+
+<!-- Modal1 -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Contact a Moderator</h4>
+      </div>
+      <div class="modal-body">
+        Here is where you would get in touch with a moderator to dispute a post not being approved or something.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Submit Info</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Modal -->
+
+<!-- Modal2 -->
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">About Us</h4>
+      </div>
+      <div class="modal-body">
+        This project is by Garrett Yamada, Shawn Yup, and Adam Starbuck.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Give Good Grade</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="col-sm-3">
         <h2>News Portal Home</h2>
@@ -117,6 +159,8 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
             Aliquam in felis sit amet augue.</div>
         </div>
         <hr>
+        <button type="button" class="btn btn-warning btn-lg">Company RSS Feed</button>
+
   </div><!--/right-->
 <br>
 
@@ -157,7 +201,8 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
                       <div class="form-group">
                         <div class="controls">
                           <input type="hidden" name="action" value="submit"/>
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Submit Post</button>
+
                         </div>
                       </div>   
                       
