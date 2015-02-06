@@ -35,6 +35,6 @@ if($link->info == ""){
 </head>
 <body>
 <p>Your post was <?php print($success)?> submitted!</p> <br>
-<a href="index.php"><button type="button" class="btn btn-default btn-sm">Return to homepage</button></a>
+<a href="index.php?name=<?php print($poster);?>"><button type="button" class="btn btn-default btn-sm">Return to homepage</button></a>
 </body>
 </html>
