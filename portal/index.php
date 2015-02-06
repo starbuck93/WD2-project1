@@ -220,7 +220,7 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
 	      <div class="col-xs-12">
 	        <h2><?php print($result_array[$j][0]) ?></h2>
 	        <p><?php print($result_array[$j][1]) ?></p>
-	        <ul class="list-inline"><li><?php print($result_array[$j][3]) ?></li><li>Submitted by: <?php print($result_array[$j][2]) ?></a></li><li>Approved by: <?php print($result_array[$j][4]) ?></li></ul>
+	        <em><ul class="list-inline"><li><?php print($result_array[$j][3]) ?></li><li>Submitted by: <?php print($result_array[$j][2]) ?></a></li><li>Approved by: <?php print($result_array[$j][4]) ?></li></ul></em>
 	      </div>
 	</div>
 	    <hr>

@@ -219,7 +219,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
         <div class="col-xs-12">
           <h2><?php print($result_array2[$j][0]) ?></h2>
           <p><?php print($result_array2[$j][1]) ?></p>
-          <ul class="list-inline"><li><?php print($result_array2[$j][3]) ?></li><li>Submitted by: <?php print($result_array2[$j][2]) ?></a></li><li>Approved by: <?php print($result_array2[$j][4]) ?></li></ul>
+          <em><ul class="list-inline"><li><?php print($result_array2[$j][3]) ?></li><li>Submitted by: <?php print($result_array2[$j][2]) ?></a></li><li>Approved by: <?php print($result_array2[$j][4]) ?></li></ul></em>
         </div>
   </div>
       <hr>
