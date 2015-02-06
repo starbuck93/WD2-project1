@@ -24,10 +24,10 @@ if($action == "login_user")
         $passFromServer = '';
         $moderator = '';
 
-        if($email == "")
-            $message = "You have to input an email address!";
-        if($passwrd == "")
-            $message = "You have to input a password!";
+        // if($email == "")
+        //     $message = "You have to input an email address!";
+        // if($passwrd == "")
+        //     $message = "You have to input a password!";
 
     	$email = htmlentities($link->real_escape_string($email));
     	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
@@ -35,12 +35,13 @@ if($action == "login_user")
         $row_cnt = $result->num_rows;
 
         if($row_cnt == 0){
-            print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">Something went wrong! The email or password is incorrect, or you'll need to sign up.</div><div class=\"col-md-4\"></div></div>");
+            $message = "WOAH";
+            print("<div class=\"container\"> <div class=\"col-md-4\"></div><div class=\"col-md-4 alert alert-danger\">$message Something went wrong! The email or password is incorrect, or you'll need to sign up.</div><div class=\"col-md-4\"></div></div>");
         }
 
         /* fetch object array */
         /* I think this will only work when there are unique emails in our database */
-        /* and when the SQL returns true (so the email and password match!) */    
+        /* and when the SQL returns true (so the email and password match!) */
         while ($obj = $result->fetch_object()) {
         	$emailFromServer = $obj->email;
         	$passFromServer =  $obj->pass;
@@ -52,13 +53,16 @@ if($action == "login_user")
             header("Location: http://localhost/WD2-project1/portal/portal_ismod.html"); //of course this only works on localhost but it has to be a full URL
             die(); 
         }
-        if(!$result)
-                die ('Can\'t query users because: ' . $link->error);
-            else { //the user is logged in because the SQL returned true!
-                //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
-                header("Location: http://localhost/WD2-project1/portal"); //of course this only works on localhost but it has to be a full URL
-                  die();
-            }
+
+    	if ($message == "") {
+            if(!$result)
+                    die ('Can\'t query users because: ' . $link->error);
+                else { //the user is logged in because the SQL returned true!
+                    //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
+                    header("Location: http://localhost/WD2-project1/portal/index.html"); //of course this only works on localhost but it has to be a full URL
+                      die();
+                }
+        }
     }
 
 // elseif ($action == "delete_user") {
