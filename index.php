@@ -86,6 +86,9 @@ if($action == "login_user")
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
 	<body style="margin-top:200px">
+
+        <img src="bg.jpg" id="bg" alt="">
+        
 <!--login modal-->
 <div class="container">
         <div class="row">
