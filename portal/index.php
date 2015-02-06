@@ -96,35 +96,34 @@
                   </div>
                   <div class="panel-body">
                     
-                    <form class="form form-vertical">
+                    <form class="form form-vertical" action="submit.php" method="POST">
                       <div class="form-group">
                         <label>Name</label>
                         <div class="controls">
-                          <input type="text" class="form-control" placeholder="Enter Name">
+                          <input type="text" class="form-control" placeholder="Enter Your Name" name="posted_by">
                         </div>
-                      </div>      
+                      </div><!--form-group-->
+
                       <div class="form-group">
                         <label>Post Title</label>
                         <div class="controls">
-                          <input type="password" class="form-control" placeholder="Password">
-                          
+                          <input type="text" class="form-control" placeholder="Creative Title" name="posted_Title">
                         </div>
-                      </div>   
+                      </div><!--form-group-->
+
                       <div class="form-group">
                         <label>Content</label>
                         <div class="controls">
-                          <textarea class="form-control" rows="5"></textarea>
+                        <textarea class="form-control" rows="5" name="posted_text"></textarea>
                         </div>
-                      </div> 
+                      </div> <!--form-group-->
                       <div class="form-group">
                         <div class="controls">
-                          <button type="submit" class="btn btn-primary">
-                            Submit
-                          </button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                       </div>   
                       
-                    </form>
+                    </form><!--form-->
                     
                     
                   </div><!--/panel content-->

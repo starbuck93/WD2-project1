@@ -59,7 +59,7 @@ if($action == "login_user")
                     die ('Can\'t query users because: ' . $link->error);
                 else { //the user is logged in because the SQL returned true!
                     //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
-                    header("Location: http://localhost/WD2-project1/portal/index.html"); //of course this only works on localhost but it has to be a full URL
+                    header("Location: http://localhost/WD2-project1/portal/index.php"); //of course this only works on localhost but it has to be a full URL
                       die();
                 }
         }
