@@ -11,7 +11,9 @@ if ($link->connect_errno) {
 //do stuff
 $success = "unsuccessfully";
 
-$user_name_admin = $_GET["name"];
+if(isset($_REQUEST["name"]))
+  $user_name_admin = $_REQUEST["name"];
+
 
 $result = $link->query("SELECT * FROM stories WHERE approved_by='0'");
 printf("%s\n", $link->info);
@@ -29,10 +31,6 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
   $result_array[$i][3] = $obj->date_posted; //3
   $i++;
 }
-
-// $num_row = $result->$num_rows; //to enumerate through inside of the html
-
-
 
 ?>
 
@@ -69,7 +67,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
 		</ul>
 		<div class="pull-right">
       <ul class="nav navbar-nav">
-          <li><a href="../"></span><strong><?php print($user_name_admin . ", "); ?> Logout</strong></a></li>
+          <li><a href="../"></span><strong><?php if(isset($user_name_admin)) print($user_name_admin . ", "); ?>Logout</strong></a></li>
       </ul>
 		</div>
 	</div>
@@ -170,7 +168,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
       <div class="panel panel-info">
           <div class="panel-heading"><h4>Posts Awaiting Approval</h4></div>
           <div class="panel-body">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-responsive">
                   <tr>
                     <th>User</th>
                     <th>Post Title</th> 
@@ -185,7 +183,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                     <td><?php print($result_array[$j][0]);?></td> 
                     <td><form action="approve.php" method="POST"><input type="hidden" name="username" value=<?php print($user_name_admin);?> /><button name="Button1" value="<?php print($result_array[$j][0]);?>" class="btn btn-sm btn-primary">Approve</button></form></td> <!-- name=post_title -->
                   </tr>
-                <?php } //end while loop
+                <?php } //end for loop
                 } 
                 else{//end if statement?>
                   <tr>

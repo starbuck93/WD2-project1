@@ -1,3 +1,40 @@
+<?php
+
+$link = new mysqli("localhost","root","","project1"); /*for local testing only*/
+
+//link database
+if ($link->connect_errno) {
+    printf("Connect failed: %s\n", $link->connect_error);
+    exit();
+}
+
+//do stuff
+$success = "unsuccessfully";
+
+if(isset($_REQUEST["name"]))
+  $user_name_admin = $_REQUEST["name"];
+
+
+$result = $link->query("SELECT * FROM stories WHERE approved_by!='0'");
+
+if($link->info == ""){
+    $success = "successfully";
+}
+
+$result_array = array();
+//while loop for inserting data into the array for results of all the posts
+$i = 0;
+while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->title etc...
+  $result_array[$i][0] = $obj->title;       //0
+  $result_array[$i][1] = $obj->content;     //1
+  $result_array[$i][2] = $obj->poster;      //2
+  $result_array[$i][3] = $obj->date_posted; //3
+  $result_array[$i][4] = $obj->approved_by; //4
+  $i++;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -32,7 +69,7 @@
 		</ul>
 		<div class="pull-right">
       <ul class="nav navbar-nav">
-          <li><a href="../"></span><strong><?php print($_GET["name"] . ", "); ?> Logout</strong></a></li>
+          <li><a href="../"></span><strong><?php if(isset($_GET["name"])) print($_GET["name"] . ", "); ?> Logout</strong></a></li>
       </ul>
 		</div>
 	</div>
@@ -106,18 +143,22 @@
     </div>
 
 
-    <div class="row">
-      <div class="col-xs-12">
-        <h2>Company was Invaded by Hornets</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-          Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline"><li>2 Hours Ago</li><li>Submitted by: </a></li><li>Approved by: </li></ul>
-        
-      </div>
-    </div>
-    <hr>
+	<?php 
+	if($i !== 0){
+	for($j=0; $j < $i; $j++){?>
+	<div class="row">
+	      <div class="col-xs-12">
+	        <h2><?php print($result_array[$j][0]) ?></h2>
+	        <p><?php print($result_array[$j][1]) ?></p>
+	        <ul class="list-inline"><li><?php print($result_array[$j][3]) ?></li><li>Submitted by: <?php print($result_array[$j][2]) ?></a></li><li>Approved by: <?php print($result_array[$j][4]) ?></li></ul>
+	      </div>
+	</div>
+	    <hr>
+	<?php } //end for loop
+	} 
+	else{//end if statement?>
+
+	<?php } //end else statement ?>
     
   </div>
 

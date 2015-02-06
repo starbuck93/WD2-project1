@@ -1,13 +1,23 @@
+
+
+
+
+
+
+
+
+<?php 
+if($i !== 0){
+for($j=0; $j < $i; $j++){?>
 <div class="row">
       <div class="col-xs-12">
-        <h2>Company was Invaded by Hornets</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-          Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline"><li>2 Hours Ago</li><li>Submitted by: </a></li><li>Approved by: </li></ul>
-        
+        <h2><?php print($result_array[$i][0]) ?></h2>
+        <p><?php print($result_array[$i][1]) ?></p>
+        <ul class="list-inline"><li><?php print($result_array[$i][3]) ?></li><li>Submitted by: <?php print($result_array[$i][2]) ?></a></li><li>Approved by: <?php print($result_array[$i][4]) ?></li></ul>
       </div>
 </div>
-
     <hr>
+<?php } //end while loop
+} 
+else{//end if statement?>
+<?php } //end else statement ?>
