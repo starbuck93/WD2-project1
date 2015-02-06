@@ -13,12 +13,51 @@ $success = "unsuccessfully";
 
 if(isset($_REQUEST["name"]))
   $user_name_admin = $_REQUEST["name"];
+else
+  $user_name_admin = "default";
+
+$message = "";
+
+if(isset($_REQUEST["action"]))
+  $action = $_REQUEST["action"];
+else
+  $action = "none";
+
+$approve_success = " ";
+$submit_success = " ";
+
+if($action == "approve")
+{
+  $value_title = $_POST["Button1"];
+  $name = $_POST["username"];
+  $result = $link->query("UPDATE stories SET approved_by='$name' WHERE title = '$value_title'");
+  if($link->info != ""){
+      $approve_success = "Successful Approve";
+  }
+}
+elseif ($action == "submit") {
+  $title = $_POST["posted_Title"]; 
+  $content = $_POST["posted_text"];
+  $poster = $_POST["posted_by"];
+  $date_posted = date("c",time()); //timestamp!
+  $approved_by = $user_name_admin; //auto-approve
+
+  $title = htmlentities($link->real_escape_string($title));
+  $content = htmlentities($link->real_escape_string($content));
+  $poster = htmlentities($link->real_escape_string($poster));
+
+  $result = $link->query("INSERT INTO stories (title,content,poster,date_posted,approved_by) VALUES ('$title', '$content', '$poster', '$date_posted', '$approved_by')");
+  printf("%s\n", $link->info);
+  if($link->info == ""){
+      $submit_success = "Successful Post";
+  }
+}
 
 
-$result = $link->query("SELECT * FROM stories WHERE approved_by='0'");
+$result = $link->query("SELECT * FROM stories WHERE approved_by='0' ORDER BY date_posted DESC");
 printf("%s\n", $link->info);
 if($link->info == ""){
-    $success = "successfully";
+    $success = "successful";
 }
 
 $result_array = array();
@@ -30,6 +69,25 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
   $result_array[$i][2] = $obj->poster; //2
   $result_array[$i][3] = $obj->date_posted; //3
   $i++;
+}
+
+//This will fetch the actualy posts that are already approved
+$result2 = $link->query("SELECT * FROM stories WHERE approved_by!='0' ORDER BY date_posted DESC");
+
+if($link->info == ""){
+    $success = "successfully";
+}
+
+$result_array2 = array();
+//while loop for inserting data into the array for results of all the posts
+$k = 0;
+while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->title etc...
+  $result_array2[$k][0] = $obj->title;       //0
+  $result_array2[$k][1] = $obj->content;     //1
+  $result_array2[$k][2] = $obj->poster;      //2
+  $result_array2[$k][3] = $obj->date_posted; //3
+  $result_array2[$k][4] = $obj->approved_by; //4
+  $k++;
 }
 
 ?>
@@ -112,11 +170,11 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                   </div>
                   <div class="panel-body">
                     
-                    <form class="form form-vertical" action="submit.php" method="POST">
+                    <form class="form form-vertical" action="portal_ismod.php" method="POST">
                       <div class="form-group">
                         <label>Name</label>
                         <div class="controls">
-                          <input type="text" class="form-control" placeholder="Enter Your Name" name="posted_by">
+                          <input type="text" class="form-control" <?php if($user_name_admin == "default") printf("%s","placeholder=\"Enter Your Name\""); else printf("%s","value=\"$user_name_admin\"");?> name="posted_by">
                         </div>
                       </div><!--form-group-->
 
@@ -135,31 +193,35 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                       </div> <!--form-group-->
                       <div class="form-group">
                         <div class="controls">
+                          <input type="hidden" name="action" value="submit"/>
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                       </div>   
                       
                     </form><!--form-->
-                    
+                    <?php if($submit_success !== " ") printf("%s","Successful Post!");?>
                     
                   </div><!--/panel content-->
                 </div><!--/panel-->
             </div>
     </div>
        
- <div class="row">
-      <div class="col-xs-12">
-        <h2>Company was Invaded by Hornets</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-          Aliquam in felis sit amet augue.</p>
-        <ul class="list-inline"><li>2 Hours Ago</li><li>Submitted by: </a></li><li>Approved by: </li></ul>
-        
-      </div>
-</div>
+  <?php 
+  if($k !== 0){
+  for($j=0; $j < $k; $j++){?>
+  <div class="row">
+        <div class="col-xs-12">
+          <h2><?php print($result_array2[$j][0]) ?></h2>
+          <p><?php print($result_array2[$j][1]) ?></p>
+          <ul class="list-inline"><li><?php print($result_array2[$j][3]) ?></li><li>Submitted by: <?php print($result_array2[$j][2]) ?></a></li><li>Approved by: <?php print($result_array2[$j][4]) ?></li></ul>
+        </div>
+  </div>
+      <hr>
+  <?php } //end for loop
+  } 
+  else{//end if statement?>
 
-<hr>
+  <?php } //end else statement ?>
 
   </div><!--/center-->
 
@@ -181,7 +243,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                   <tr>
                     <td><?php print($result_array[$j][2]);?></td>
                     <td><?php print($result_array[$j][0]);?></td> 
-                    <td><form action="approve.php" method="POST"><input type="hidden" name="username" value=<?php print($user_name_admin);?> /><button name="Button1" value="<?php print($result_array[$j][0]);?>" class="btn btn-sm btn-primary">Approve</button></form></td> <!-- name=post_title -->
+                    <td><form action="portal_ismod.php" method="POST"><input type="hidden" name="action" value="approve"/><input type="hidden" name="username" value=<?php print($user_name_admin);?> /><button name="Button1" value="<?php print($result_array[$j][0]);?>" class="btn btn-sm btn-primary">Approve</button></form></td> <!-- name=post_title -->
                   </tr>
                 <?php } //end for loop
                 } 
@@ -196,6 +258,8 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
 
 
               </table>
+              <?php if($approve_success !== " ") printf("%s","Successful Approve!");?>
+
           </div>
         </div>
         <hr>

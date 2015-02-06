@@ -12,10 +12,36 @@ if ($link->connect_errno) {
 $success = "unsuccessfully";
 
 if(isset($_REQUEST["name"]))
-  $user_name_admin = $_REQUEST["name"];
+  $user_name = $_REQUEST["name"];
+else
+  $user_name = "default";
+
+if(isset($_REQUEST["action"]))
+  $action = $_REQUEST["action"];
+else
+  $action = "none";
 
 
-$result = $link->query("SELECT * FROM stories WHERE approved_by!='0'");
+$submit_success = " ";
+if($action == "submit") {
+  $title = $_POST["posted_Title"]; 
+  $content = $_POST["posted_text"];
+  $poster = $_POST["posted_by"];
+  $date_posted = date("c",time()); //timestamp!
+  $approved_by = 0; //not approved yet
+
+  $title = htmlentities($link->real_escape_string($title));
+  $content = htmlentities($link->real_escape_string($content));
+  $poster = htmlentities($link->real_escape_string($poster));
+
+  $result = $link->query("INSERT INTO stories (title,content,poster,date_posted,approved_by) VALUES ('$title', '$content', '$poster', '$date_posted', '$approved_by')");
+  printf("%s\n", $link->info);
+  if($link->info == ""){
+      $submit_success = "successful";
+  }
+}
+
+$result = $link->query("SELECT * FROM stories WHERE approved_by!='0' ORDER BY date_posted DESC");
 
 if($link->info == ""){
     $success = "successfully";
@@ -107,11 +133,11 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
                   </div>
                   <div class="panel-body">
                     
-                    <form class="form form-vertical" action="submit.php" method="POST">
+                    <form class="form form-vertical" action="index.php" method="POST">
                       <div class="form-group">
                         <label>Name</label>
                         <div class="controls">
-                          <input type="text" class="form-control" placeholder="Enter Your Name" name="posted_by">
+                          <input type="text" class="form-control" <?php if($user_name == "default") printf("%s","placeholder=\"Enter Your Name\""); else printf("%s","value=\"$user_name\"");?> name="posted_by">
                         </div>
                       </div><!--form-group-->
 
@@ -130,6 +156,7 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
                       </div> <!--form-group-->
                       <div class="form-group">
                         <div class="controls">
+                          <input type="hidden" name="action" value="submit"/>
                           <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                       </div>   
