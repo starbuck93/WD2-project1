@@ -136,7 +136,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                       </div> <!--form-group-->
                       <div class="form-group">
                         <div class="controls">
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Submit Post</button>
                         </div>
                       </div>   
                       
@@ -166,7 +166,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
 
 
 <div class="col-md-3">
-      <div class="panel panel-info">
+      <div class="panel panel-primary">
           <div class="panel-heading"><h4>Posts Awaiting Approval</h4></div>
           <div class="panel-body">
               <table class="table table-bordered table-responsive">
@@ -189,8 +189,8 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                 else{//end if statement?>
                   <tr>
                     <td><p>---</p></td>
-                    <td>nothing to approve!</td> 
-                    <td><p>:-)</p></td>
+                    <td>No posts to approve!</td> 
+                    <td><p>---</p></td>
                   </tr>
 
                 <?php } //end else statement ?>
@@ -201,7 +201,7 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
         </div>
         <hr>
               <!-- From Boot Snip -->
-                <div class="panel panel-primary">
+                <div class="panel panel-info">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         Vote for Employee of The Year
@@ -245,10 +245,10 @@ while ($obj = $result->fetch_object()) { //put these into $result_array[0]->titl
                     </ul>
                 </div>
                 <div class="panel-footer">
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button type="button" class="btn btn-default btn-sm">
                         Vote</button>
 
-                    <button type="button" class="btn btn-primary btn-sm">
+                    <button type="button" class="btn btn-default btn-sm">
                       View Result</button>
                      
                   </div>
