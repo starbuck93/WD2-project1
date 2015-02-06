@@ -1,3 +1,41 @@
+<?php
+
+$link = new mysqli("localhost","root","","project1"); /*for local testing only*/
+
+//link database
+if ($link->connect_errno) {
+    printf("Connect failed: %s\n", $link->connect_error);
+    exit();
+}
+
+//do stuff
+$success = "unsuccessfully";
+
+$user_name_admin = $_GET["name"];
+
+$result = $link->query("SELECT * FROM stories WHERE approved_by='0'");
+printf("%s\n", $link->info);
+if($link->info == ""){
+    $success = "successfully";
+}
+
+$result_array = array();
+//while loop for inserting data into the array for results of the posts that need to be approved
+$i = 0;
+while ($obj = $result->fetch_object()) { //put these into $result_array[0]->title etc...
+  $result_array[$i][0] = $obj->title; //0
+  $result_array[$i][1] = $obj->content; //1
+  $result_array[$i][2] = $obj->poster; //2
+  $result_array[$i][3] = $obj->date_posted; //3
+  $i++;
+}
+
+// $num_row = $result->$num_rows; //to enumerate through inside of the html
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -31,7 +69,7 @@
 		</ul>
 		<div class="pull-right">
       <ul class="nav navbar-nav">
-          <li><a href="../"></span><strong>Logout</strong></a></li>
+          <li><a href="../"></span><strong><?php print($user_name_admin . ", "); ?> Logout</strong></a></li>
       </ul>
 		</div>
 	</div>
@@ -138,11 +176,27 @@
                     <th>Post Title</th> 
                     <th>Approve</th>
                  </tr>
+                <?php 
+                if($i !== 0){
+
+                for($j=0; $j < $i; $j++){?>
                   <tr>
-                    <td>Adam</td>
-                    <td>The Company Sucks</td> 
-                    <td><button class="btn btn-sm btn-primary">Approve</button></td>
+                    <td><?php print($result_array[$j][2]);?></td>
+                    <td><?php print($result_array[$j][0]);?></td> 
+                    <td><form action="approve.php" method="POST"><input type="hidden" name="username" value=<?php print($user_name_admin);?> /><button name="Button1" value="<?php print($result_array[$j][0]);?>" class="btn btn-sm btn-primary">Approve</button></form></td> <!-- name=post_title -->
                   </tr>
+                <?php } //end while loop
+                } 
+                else{//end if statement?>
+                  <tr>
+                    <td><p>---</p></td>
+                    <td>nothing to approve!</td> 
+                    <td><p>:-)</p></td>
+                  </tr>
+
+                <?php } //end else statement ?>
+
+
               </table>
           </div>
         </div>

@@ -32,7 +32,7 @@
 		</ul>
 		<div class="pull-right">
       <ul class="nav navbar-nav">
-          <li><a href="../"></span><strong>Logout</strong></a></li>
+          <li><a href="../"></span><strong><?php print($_GET["name"] . ", "); ?> Logout</strong></a></li>
       </ul>
 		</div>
 	</div>

@@ -43,14 +43,15 @@ if($action == "login_user")
         /* I think this will only work when there are unique emails in our database */
         /* and when the SQL returns true (so the email and password match!) */
         while ($obj = $result->fetch_object()) {
-        	$emailFromServer = $obj->email;
-        	$passFromServer =  $obj->pass;
-            $moderator =       $obj->is_mod;
+        	$emailFromServer  = $obj->email;
+            $passFromServer   = $obj->pass;
+            $user_name_server = $obj->name;
+            $moderator        = $obj->is_mod;
         }
 
         if($moderator) //super secure!!!!
         {
-            header("Location: http://localhost/WD2-project1/portal/portal_ismod.html"); //of course this only works on localhost but it has to be a full URL
+            header("Location: http://localhost/WD2-project1/portal/portal_ismod.php?name=$user_name_server"); //of course this only works on localhost but it has to be a full URL
             die(); 
         }
 
@@ -59,7 +60,7 @@ if($action == "login_user")
                     die ('Can\'t query users because: ' . $link->error);
                 else { //the user is logged in because the SQL returned true!
                     //die('Here\'s your data ' . $email . ' ' . $passwrd . ' '. $emailFromServer . ' ' . $passFromServer); //testing code
-                    header("Location: http://localhost/WD2-project1/portal/index.php"); //of course this only works on localhost but it has to be a full URL
+                    header("Location: http://localhost/WD2-project1/portal/index.php?name=$user_name_server"); //of course this only works on localhost but it has to be a full URL
                       die();
                 }
         }
