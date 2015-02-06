@@ -238,8 +238,52 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
       </nav>
   </div>
 
-  
+    <div class="col-md-3">
+
+   <div class="row">
+      <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><b>Employee Ranking</b></div>
+
+        <!-- Table -->
+        <table class="table">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th><i>First Name</i></th>
+            <th><i>Last Name</i></th>
+            <th><i>Username</i></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Garrett</td>
+            <td>Yamada</td>
+            <td>@abcd</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Adam</td>
+            <td>Starbuck</td>
+            <td>@defg</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Shawn</td>
+            <td>Yap</td>
+            <td>@scy</td>
+          </tr>
+        </tbody>
+      </table>
+        </table>
+      </div>
+   
+  </div>
+    </div>
 </div><!--/container-fluid-->
+    
+  
 
 	<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
