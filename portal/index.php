@@ -91,6 +91,8 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
             Aliquam in felis sit amet augue.</div>
         </div>
         <hr>
+        <button type="button" class="btn btn-warning btn-lg">Company RSS Feed</button>
+
   </div><!--/right-->
 <br>
 
