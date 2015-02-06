@@ -147,7 +147,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
             Aliquam in felis sit amet augue.</div>
         </div>
         <hr>
-        
+        <button type="button" class="btn btn-warning btn-lg">Company RSS Feed</button>
   </div><!--/right-->
 <br>
 
@@ -324,8 +324,7 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
 
             </div>
             <hr>
-            <div class="pull-right">
-            <button type="button" class="btn btn-warning btn-lg">Company RSS Feed</button>
+            
 </div>
   </div><!--/right-->
 
