@@ -57,10 +57,10 @@ function CheckPswd() {
  
     if(pswd1 == pswd2) {
         
-       $("#validate-status").text("valid");        
+       $("#validate-status").text("Passwords match!");        
     }
     else {
-        $("#validate-status").text("invalid");
+        $("#validate-status").text("Passwords do not match");
     }
     
 }
