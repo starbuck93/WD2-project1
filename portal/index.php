@@ -142,7 +142,6 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
             </div>
     </div>
 
-
 	<?php 
 	if($i !== 0){
 	for($j=0; $j < $i; $j++){?>
@@ -159,7 +158,13 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
 	else{//end if statement?>
 
 	<?php } //end else statement ?>
-    
+      
+      <nav>
+        <ul class="pager">
+          
+          <li class="next"><a href="#">Older <span aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+      </nav>
   </div>
 
   
