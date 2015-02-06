@@ -1,3 +1,5 @@
+We're Live! http://wd2.starbuckstech.com/
+
 #Problem Description:
 
 After your recent success in dabbling with CSS and JavaScript, your boss hears of it and calls you into his office.  He proceeds to tell you that the company needs a new news portal to display all of their company news, and that he wants you to use your newly found web prowess to do it.  “I love news,” he says. “But our current website wasn't designed for news, so we're making a whole new portal.”  He tells you that people should be able to sign-in to submit content which moderators can review and submit.  “Anyone in the company should be able to submit something they're proud of, but we want to make sure it's moderated.”  He also mentions something under his breath about making sure other sites can remotely read our news feed.  Before you can ask him for more information, he gets a call from his own boss and dismisses you.
