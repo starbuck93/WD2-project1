@@ -16,6 +16,11 @@ if(isset($_REQUEST["name"]))
 else
   $user_name_admin = "default";
 
+if(isset($_REQUEST["username"]))
+  $user_name_admin = $_REQUEST["username"];
+else
+  $user_name_admin = "default";
+
 $message = "";
 
 if(isset($_REQUEST["action"]))
@@ -189,7 +194,8 @@ while ($obj = $result2->fetch_object()) {    //put these into $result_array[0]->
                       </div> <!--form-group-->
                       <div class="form-group">
                         <div class="controls">
-                          <input type="hidden" name="action" value="submit"/>
+                          <input type="hidden" name="action" value="submit">
+                          <input type="hidden" name="username" value=<?php print($user_name_admin);?> />
                           <button type="submit" class="btn btn-primary">Submit Post</button>
                         </div>
                       </div>   

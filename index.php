@@ -24,10 +24,6 @@ if($action == "login_user")
         $passFromServer = '';
         $moderator = '';
 
-        // if($email == "")
-        //     $message = "You have to input an email address!";
-        // if($passwrd == "")
-        //     $message = "You have to input a password!";
 
     	$email = htmlentities($link->real_escape_string($email));
     	$result = $link->query("SELECT * from users where email= '$email' AND pass= '$passwrd'");
@@ -66,15 +62,6 @@ if($action == "login_user")
         }
     }
 
-// elseif ($action == "delete_user") {
-// 	$id = $_POST["id"];
-// 	$id = htmlentities($link->real_escape_string($id));
-// 	$result = $link->query("delete from users where id='" . $id . "'");
-// 	if(!$result)
-// 		die ('Can\'t query users because: ' . $link->error);
-// 	else
-// 		$message = "User Deleted";
-// }
 
 ?>
 
@@ -90,10 +77,8 @@ if($action == "login_user")
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
-	<body style="margin-top:200px">
+	<body background="bg.jpg" style="margin-top:200px; background:no-repeat center top scroll;">
 
-        <img src="bg.jpg" id="bg" alt="">
-        
 <!--login modal-->
 <div class="container">
         <div class="row">
@@ -117,9 +102,7 @@ if($action == "login_user")
                             </fieldset>
                         </form>
 
-                        <br><?php
-                            if($message != "")
-                                print $message;?>
+                        <br>
                         <center><a href="signup.php"><b>Create a new account</b></a></center>
                     </div>
                 </div>

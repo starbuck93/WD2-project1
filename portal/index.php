@@ -37,7 +37,7 @@ if($action == "submit") {
   $result = $link->query("INSERT INTO stories (title,content,poster,date_posted,approved_by) VALUES ('$title', '$content', '$poster', '$date_posted', '$approved_by')");
   printf("%s\n", $link->info);
   if($link->info == ""){
-      $submit_success = "successful";
+      $submit_success = "Successful post";
   }
 }
 
@@ -202,7 +202,8 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
                       </div>   
                       
                     </form><!--form-->
-                    
+                    <?php if($submit_success !== " ") printf("%s","Successful Post!");?>
+
                     
                     
                   </div><!--/panel content-->

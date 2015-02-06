@@ -78,9 +78,7 @@ function CheckPswd() {
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<link href="css/styles.css" rel="stylesheet">
 	</head>
-	<body style="margin-top:200px">
-
-        <img src="bg.jpg" id="bg" alt="">
+    <body background="bg.jpg" style="margin-top:200px; background-size:cover;">
         
 <!--login modal-->
 <div class="container">
