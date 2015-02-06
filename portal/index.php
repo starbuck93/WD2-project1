@@ -133,7 +133,7 @@ while ($obj = $result->fetch_object()) {    //put these into $result_array[0]->t
         <h4 class="modal-title" id="myModalLabel">About Us</h4>
       </div>
       <div class="modal-body">
-        This project is by Garrett Yamada, Shawn Yup, and Adam Starbuck.
+        This project is by Garrett Yamada, Shawn Yap, and Adam Starbuck.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
